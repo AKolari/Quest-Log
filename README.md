@@ -1,3 +1,10 @@
+Quest log is a simple task tracker app built using Next.js, supabase, and tailwind.css
+
+The app is themed around video game quests, where each task in the task tracker is a new "quest" for the user to complete.
+
+Current Features:
+-Uhhhhhhhh
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
