@@ -7,6 +7,26 @@ const logout = async () => {
   return { success: !error, error };
 };
 
+const getLatestUsers = async (num = 5) => {
+  const { data, error } = await supabase
+    .from("profile")
+    .select("username")
+    .order("created_at", { ascending: false })
+    .limit(num);
+
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
+
 const addNewList = async (
   user_id,
   title = "New List",
@@ -134,7 +154,8 @@ const getListQuests = async (list_id) => {
   const { data: questData, error: questError } = await supabase
     .from("quest")
     .select("*")
-    .eq("list_id", list_id);
+    .eq("list_id", list_id)
+    .order("order", { ascending: true });
 
   if (questError) {
     return {
@@ -350,4 +371,5 @@ export {
   addNewQuest,
   addNewList,
   editQuestById,
+  getLatestUsers,
 };
