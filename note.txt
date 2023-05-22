@@ -1,0 +1,4 @@
+Notes for when you do this:
+install nextjs,tailwind,supabase
+
+for styling do FF1 styled stuff
