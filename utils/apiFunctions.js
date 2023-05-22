@@ -7,19 +7,104 @@ const logout = async () => {
   return { success: !error, error };
 };
 
-const addNewQuest = async (list_id, order, name, description = "quest") => {
-  const insertResponse = await supabase.from("quest").insert({
-    order,
-    list_id,
-    name,
-    description,
-  });
+const getLatestUsers = async (num = 5) => {
+  const { data, error } = await supabase
+    .from("profile")
+    .select("username")
+    .order("created_at", { ascending: false })
+    .limit(num);
+
+  if (error) {
+    return {
+      success: false,
+      error,
+    };
+  }
+
+  return {
+    success: true,
+    data,
+  };
+};
+
+const addNewList = async (
+  user_id,
+  title = "New List",
+  description = "list"
+) => {
+  const insertResponse = await supabase
+    .from("list")
+    .insert({
+      user_id,
+      title,
+      description,
+    })
+    .select("id")
+    .single();
   if (insertResponse.error) {
     return {
       success: false,
       error: insertResponse.error,
     };
   }
+  console.log(insertResponse.data);
+  return {
+    success: true,
+    message: "successfully added",
+    data: insertResponse.data,
+  };
+};
+
+const editQuestById = async (
+  id,
+  order,
+  name,
+  description,
+  completion_status
+) => {
+  const editResponse = await supabase
+    .from("quest")
+    .update({
+      order: order,
+      name: name,
+      description: description,
+      completion_status: completion_status,
+    })
+    .eq("id", id);
+
+  if (editResponse.error) {
+    return {
+      success: false,
+      error: editResponse.error,
+    };
+  }
+
+  return {
+    success: true,
+    message: "successfully added",
+  };
+};
+
+const addNewQuest = async (
+  list_id,
+  order,
+  name = "New Quest",
+  description = "quest"
+) => {
+  const insertResponse = await supabase.from("quest").insert({
+    order,
+    list_id,
+    name,
+    description,
+  });
+
+  if (insertResponse.error) {
+    return {
+      success: false,
+      error: insertResponse.error,
+    };
+  }
+  console.log(insertResponse);
   return {
     success: true,
     message: "successfully added",
@@ -69,7 +154,8 @@ const getListQuests = async (list_id) => {
   const { data: questData, error: questError } = await supabase
     .from("quest")
     .select("*")
-    .eq("list_id", list_id);
+    .eq("list_id", list_id)
+    .order("order", { ascending: true });
 
   if (questError) {
     return {
@@ -283,4 +369,7 @@ export {
   getUserById,
   getListById,
   addNewQuest,
+  addNewList,
+  editQuestById,
+  getLatestUsers,
 };

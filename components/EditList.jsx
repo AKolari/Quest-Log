@@ -14,6 +14,7 @@ const EditList = ({ list_id }) => {
   const [questDataState, setQuestDataState] = useState([]);
   const [questStateError, setQuestStateError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
   const [questName, setQuestName] = useState("");
   const [questDescription, setQuestDescription] = useState("");
@@ -21,6 +22,7 @@ const EditList = ({ list_id }) => {
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
+      setRefresh(false);
       const { data, error: dataError } = await getListById(list_id);
 
       if (dataError) {
@@ -42,7 +44,7 @@ const EditList = ({ list_id }) => {
     };
 
     getData();
-  }, [list_id, loaded]);
+  }, [list_id, refresh]);
 
   const addQuest = async (e) => {
     e.preventDefault();
@@ -60,17 +62,20 @@ const EditList = ({ list_id }) => {
       console.log(addedQuest);
       return;
     }
-
+    console.log(addedQuest);
     setQuestName("");
     setQuestDescription("");
+    setRefresh(true);
     setLoading(true);
-    //await refreshUser();
+    //refreshUser();
   };
 
-  if (loading) {
+  if (loading || !loaded) {
     return <div>Loading</div>;
   } else {
     if (user.id !== listData.user_id) {
+      console.log(user.id);
+      console.log(listData.user_id);
       router.replace(`/`);
       return;
     } else {
