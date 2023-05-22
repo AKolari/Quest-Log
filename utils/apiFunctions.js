@@ -10,7 +10,7 @@ const logout = async () => {
 const getLatestUsers = async (num = 5) => {
   const { data, error } = await supabase
     .from("profile")
-    .select("username")
+    .select("*")
     .order("created_at", { ascending: false })
     .limit(num);
 
