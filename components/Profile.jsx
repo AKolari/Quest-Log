@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import {
+  editQuestById,
   getListQuests,
   getQuestByQuestId,
   getUserById,
@@ -49,8 +50,7 @@ const Profile = ({ username }) => {
         notFound();
       }
       setListStateData(listData);
-      console.log(listData);
-      console.log("HELLLO");
+
       let questList = [[]];
       for (let i = 0; i < listData.length; i++) {
         const { questData, questError } = await getListQuests(listData[i].id);
@@ -71,8 +71,32 @@ const Profile = ({ username }) => {
     getData();
   }, [username]);
 
-  const filterQuest = (quest, id) => {
-    return quest.list_id === id;
+  const updateQuest = async (
+    id,
+    name,
+    description,
+    order,
+    completion_status
+  ) => {
+    if (completion_status === false) {
+      const updateResponse = await editQuestById(
+        id,
+        order,
+        name,
+        description,
+        true
+      );
+      console.log(updateResponse);
+    } else {
+      const updateResponse = await editQuestById(
+        id,
+        order,
+        name,
+        description,
+        false
+      );
+      console.log(updateResponse);
+    }
   };
 
   return (
@@ -89,14 +113,40 @@ const Profile = ({ username }) => {
               .filter((quest) => {
                 return quest.list_id === id;
               })
-              .map(({ id, name, description }) => {
-                return (
-                  <Quest
-                    key={id}
-                    quest_name={name}
-                    quest_description={description}
-                  />
-                );
+              .map(({ id, name, description, order, completion_status }) => {
+                if (user.id === userStateData.id) {
+                  return (
+                    <>
+                      <Quest
+                        key={id}
+                        quest_name={name}
+                        quest_description={description}
+                        editable
+                      />
+                      <button
+                        onClick={() => {
+                          updateQuest(
+                            id,
+                            name,
+                            description,
+                            order,
+                            completion_status
+                          );
+                        }}
+                      >
+                        Complete?
+                      </button>
+                    </>
+                  );
+                } else {
+                  return (
+                    <Quest
+                      key={id}
+                      quest_name={name}
+                      quest_description={description}
+                    />
+                  );
+                }
               })}
           </div>
         );
