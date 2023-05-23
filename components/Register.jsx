@@ -91,7 +91,7 @@ const Register = () => {
                 }
 
                 return (
-                  <div>
+                  <div key={key}>
                     <div className="border-2 bg-black gmt-4 mb-4 grid grid-cols">
                       <p key={key} className="m-3 text-white">
                         <label className="h3 capitalize w-[75px] inline-block">
