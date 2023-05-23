@@ -303,106 +303,127 @@ const EditList = ({ list_id }) => {
       return;
     } else {
       return (
-        <div>
-          <p>Add New List:</p>
+        <div className="text-white bg-black">
+          <div className=" border-white border-2 flex justify-center">
+            <p className="text-4xl text-center py-6 ">Add New List:</p>
+          </div>
 
-          <form onSubmit={addList}>
-            <p className="my-5">
-              <label htmlFor="title" className="inline-block w-[75px]">
-                List Title
-              </label>
-              <input
-                id="title"
-                className="border border-2 border-black px-2"
-                value={listTitle}
-                onChange={(e) => {
-                  setListTitle(e.target.value);
-                }}
-                required
-                type="text"
-              />
-            </p>
-            <p className="my-5">
-              <label htmlFor="description" className="inline-block w-[75px]">
-                List Description
-              </label>
-              <input
-                className="border border-2 border-black px-2"
-                id="description"
-                value={listDescription}
-                onChange={(e) => setListDescription(e.target.value)}
-                type="text"
-              />
-            </p>
-            {questTitles.map((quest, i) => {
-              return (
-                <p key={i} className="my-5">
-                  <label
-                    htmlFor={`title${i}`}
-                    className="inline-block w-[75px]"
-                  >
-                    Quest Title
+          <div className="border-2 border-white flex justify-center">
+            <form onSubmit={addList}>
+              <div className="m-5 p-3">
+                <p className="my-5 border-white border-2 bg-blue-600 ">
+                  <label htmlFor="title" className=" m-3 inline-block w-[75px]">
+                    List Title
                   </label>
                   <input
-                    id={`title${i}`}
+                    id="title"
                     className="border border-2 border-black px-2"
-                    value={questTitles[i] || " "}
+                    value={listTitle}
                     onChange={(e) => {
-                      updateQuestTitles(e, i);
+                      setListTitle(e.target.value);
                     }}
                     required
                     type="text"
                   />
+                </p>
+              </div>
+              <div className="border-white border-2 bg-blue-600">
+                <p className="my-5">
                   <label
-                    htmlFor={`description${i}`}
-                    className="inline-block w-[75px]"
+                    htmlFor="description"
+                    className="inline-block w-[75px] m-3"
                   >
-                    Quest Description
+                    List Description
                   </label>
                   <input
                     className="border border-2 border-black px-2"
-                    id={`description${i}`}
-                    value={questDescriptions[i] || " "}
-                    onChange={(e) => {
-                      updateQuestDescriptions(e, i);
-                    }}
+                    id="description"
+                    value={listDescription}
+                    onChange={(e) => setListDescription(e.target.value)}
                     type="text"
                   />
-
-                  <button
-                    onClick={(e) => {
-                      //e.preventDefault();
-
-                      updateOrder(i, "up");
-                      //setRefresh(true);
-                    }}
-                  >
-                    MOVE UP
-                  </button>
-
-                  <button
-                    onClick={(e) => {
-                      //e.preventDefault();
-                      updateOrder(i);
-                      //setRefresh(true);
-                    }}
-                  >
-                    MOVE DOWN
-                  </button>
                 </p>
-              );
-            })}
+              </div>
+              {questTitles.map((quest, i) => {
+                return (
+                  <p key={i} className="my-5">
+                    <div className="border-2 border-white bg-blue-600">
+                      <label
+                        htmlFor={`title${i}`}
+                        className="inline-block w-[75px]"
+                      >
+                        Quest Title
+                      </label>
+                      <input
+                        id={`title${i}`}
+                        className="border border-2 border-black px-2"
+                        value={questTitles[i] || " "}
+                        onChange={(e) => {
+                          updateQuestTitles(e, i);
+                        }}
+                        required
+                        type="text"
+                      />
+                    </div>
+                    <div className="mt-5 border-2 border-white bg-blue-600">
+                      <label
+                        htmlFor={`description${i}`}
+                        className="inline-block w-[75px] m-2"
+                      >
+                        Quest Description
+                      </label>
+                      <input
+                        className="border border-2 border-black px-2"
+                        id={`description${i}`}
+                        value={questDescriptions[i] || " "}
+                        onChange={(e) => {
+                          updateQuestDescriptions(e, i);
+                        }}
+                        type="text"
+                      />
+                    </div>
 
-            <p className="text-center">
-              <input type="submit" className="button small" />
-            </p>
-          </form>
+                    <div className="mt-5 mr-5">
+                      <button
+                        onClick={(e) => {
+                          //e.preventDefault();
+
+                          updateOrder(i, "up");
+                          //setRefresh(true);
+                        }}
+                      >
+                        MOVE UP
+                      </button>
+
+                      <button
+                        onClick={(e) => {
+                          //e.preventDefault();
+                          updateOrder(i);
+                          //setRefresh(true);
+                        }}
+                      >
+                        MOVE DOWN
+                      </button>
+                    </div>
+                  </p>
+                );
+              })}
+
+              <p className="text-center">
+                <input
+                  type="submit"
+                  className="button small border-white bg-blue-600 border-2 m-4 py-2 px-4"
+                />
+              </p>
+            </form>
+          </div>
 
           {numOfQuests != 100 && (
             <button
               onClick={() => {
                 updateNumOfQuests(1);
               }}
+              className="border-white bg-blue-600 border-2 m-4"
             >
               Add Quest
             </button>
