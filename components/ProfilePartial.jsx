@@ -7,7 +7,7 @@ const ProfilePartial = async ({ username, id }) => {
   if (listError) {
     console.log(listError);
     return (
-      <p>
+      <p className="border-white bg-blue-600 p-4 mr-8 border-2 text-white text-center self-center">
         The forces of darkness have intervened, and hidden {username}&#39;s
         adventures from our gaze.
       </p>
@@ -15,7 +15,7 @@ const ProfilePartial = async ({ username, id }) => {
   }
   if (listData.length == 0) {
     return (
-      <p>
+      <p className="border-white bg-blue-600 p-4 mr-8 border-2 text-white text-center self-center">
         {username} has taken a break from questing for now, and has no new
         adventures to share.
       </p>
@@ -26,36 +26,46 @@ const ProfilePartial = async ({ username, id }) => {
 
   if (questError) {
     return (
-      <p>
+      <p className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
         The forces of darkness have intervened, and hidden this quest from you
       </p>
     );
   }
   if (questData.length == 0) {
     return (
-      <p>{username} has yet to undertake any quests on their adventure.</p>
+      <p className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
+        {username} has yet to undertake any quests on their adventure.
+      </p>
     );
   }
   console.log(questData);
 
   return (
-    <div>
-      <p>USERNAME: {username}</p>
-      <p>LIST TITLE: {listData.title}</p>
-      <p>LIST Description: {listData.description}</p>
+    <div className="m-6  bg-blue-600">
+      <div className=" px-10 py-8 my- border-white border-2 grid grid-flow-row ">
+        <p className="text-white pb-6">USERNAME: {username}</p>
+        <p className="text-white">LIST TITLE: {listData.title}</p>
+        <p className="text-white pb-6">
+          LIST Description: {listData.description}
+        </p>
 
-      {questData
-        .slice(0, 3)
-        .map(({ id, name, description, completion_status }) => {
-          return (
-            <div key={id}>
-              <p>QUEST NAME: {name}</p>
+        {questData
+          .slice(0, 3)
+          .map(({ id, name, description, completion_status }) => {
+            return (
+              <div key={id}>
+                <p className="text-white">QUEST NAME: {name}</p>
 
-              {completion_status && <p>QUEST Complete</p>}
-              {!completion_status && <p>QUEST NOT Complete</p>}
-            </div>
-          );
-        })}
+                {completion_status && (
+                  <p className="text-amber-400">QUEST Complete</p>
+                )}
+                {!completion_status && (
+                  <p className="text-red-700">QUEST NOT Complete</p>
+                )}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };

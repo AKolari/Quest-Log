@@ -103,16 +103,22 @@ const Profile = ({ username }) => {
     return <p>Loading</p>;
   } else {
     return (
-      <div>
+      <div className="bg-sky-200">
         <button onClick={logout}>Logout</button>
         {JSON.stringify(userStateData)}
 
         {listStateData.map(({ id, title, description }) => {
           return (
             <div key={id}>
-              <p>LIST ID:{id}</p>
-              <h1>LIST TITLE: {title}</h1>
-              <h2>LIST Description: {description}</h2>
+              <div className="bg-sky-600">
+                <p>LIST ID:{id}</p>
+              </div>
+              <div className="bg-sky-700">
+                <h1>LIST TITLE: {title}</h1>
+              </div>
+              <div className="bg-sky-800">
+                <h2>LIST Description: {description}</h2>
+              </div>
               {questStateData
                 .filter((quest) => {
                   return quest.list_id === id;
