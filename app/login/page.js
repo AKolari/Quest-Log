@@ -1,6 +1,10 @@
 import Login from "@/components/Login";
 
 function Page() {
-  return <Login />;
+  return (
+    <div className="bg-black">
+      <Login />;
+    </div>
+  );
 }
 export default Page;

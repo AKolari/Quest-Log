@@ -51,7 +51,7 @@ const Register = () => {
   };
 
   return (
-    <div className="barge text-black">
+    <div className="barge text-black  ">
       {response && (
         <div
           className={`${
@@ -68,43 +68,59 @@ const Register = () => {
           {response.message}
         </div>
       )}
-      <h2 className="my-10 h1 text-center">Register</h2>
-      <form
-        onSubmit={register}
-        className={loading ? "opacity-[10%] pointer-events-none" : ""}
-      >
-        {Object.keys(initialState)
-          .filter((k) => !["response", "loading"].includes(k))
-          .map((key) => {
-            let type = "text";
-            if (key === "password") {
-              type = "password";
-            } else if (key === "email") {
-              type = "email";
-            }
-
-            return (
-              <p key={key} className="mb-5">
-                <label className="h3 capitalize w-[75px] inline-block">
-                  {key}*
-                </label>
-                <input
-                  className="h3 border-2 border-black ml-5 inline-block w-[220px] px-2"
-                  required
-                  name={key}
-                  onChange={(e) => {
-                    dispatch({ type: e.target.name, value: e.target.value });
-                  }}
-                  value={state[key]}
-                  type={type}
-                />
-              </p>
-            );
-          })}
-        <div className="flex justify-center my-10 bg-white">
-          <input className="button small" type="submit"></input>
+      <div className="m-6 flex justify-center place-center bg-black ">
+        <div className=" px-8 my-4 border-white border-2">
+          <h2 className=" my-6 h1 text-center text-white text-3xl">Register</h2>
         </div>
-      </form>
+      </div>
+      <div className="flex justify-center">
+        <div className="bg-blue-700 flex border-4 w-96 border-white align py-4 items-center justify-center">
+          <form
+            onSubmit={register}
+            className={loading ? "opacity-[10%] pointer-events-none" : ""}
+          >
+            {Object.keys(initialState)
+              .filter((k) => !["response", "loading"].includes(k))
+              .map((key) => {
+                let type = "text";
+                if (key === "password") {
+                  type = "password";
+                } else if (key === "email") {
+                  type = "email";
+                }
+
+                return (
+                  <div>
+                    <div className="border-2 bg-black gmt-4 mb-4 grid grid-cols">
+                      <p key={key} className="m-3 text-white">
+                        <label className="h3 capitalize w-[75px] inline-block">
+                          {key}*:
+                        </label>
+
+                        <input
+                          className="h3 border-2 border-double border-stone-400 bg-amber-600 border-black ml-5 inline-block w-[220px] px-2"
+                          required
+                          name={key}
+                          onChange={(e) => {
+                            dispatch({
+                              type: e.target.name,
+                              value: e.target.value,
+                            });
+                          }}
+                          value={state[key]}
+                          type={type}
+                        />
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            <div className="flex justify-center justify-items-end my-10 bg-black border-white border-4">
+              <input className="button small text-white" type="submit"></input>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
