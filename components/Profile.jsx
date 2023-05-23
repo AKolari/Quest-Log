@@ -110,13 +110,10 @@ const Profile = ({ username }) => {
         {listStateData.map(({ id, title, description }) => {
           return (
             <div key={id}>
-              <div className="bg-sky-600">
+              <div className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
                 <p>LIST ID:{id}</p>
-              </div>
-              <div className="bg-sky-700">
                 <h1>LIST TITLE: {title}</h1>
-              </div>
-              <div className="bg-sky-800">
+
                 <h2>LIST Description: {description}</h2>
               </div>
               {questStateData
@@ -134,6 +131,7 @@ const Profile = ({ username }) => {
                           quest_description={description}
                           editable
                         />
+
                         <button
                           onClick={() => {
                             updateQuest(
