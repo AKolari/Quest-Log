@@ -43,7 +43,9 @@ Originally, our app was supposed to be much grander in vision. Unfortunately, we
 
 
 Updates:
-Discovered some more bugs after deployment. Completing a quest is inconsistent, and needs to be retooled. Additionally, in the vercel version, it seems that you can only view a users profile if you are logged in. This does not happen on our local version. I will have to research this further.
+-Discovered some more bugs after deployment. Completing a quest is inconsistent, and needs to be retooled. Additionally, in the vercel version, it seems that you can only view a users profile if you are logged in. This does not happen on our local version. I will have to research this further.
+
+-User cannot view profile if not logged in. This is because I have a check to see if the user viewing the profile is the profile owner. Unfortunately, I forgot to include an if statement to see if the user was logged in or not. Must fix this issue in the future.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
