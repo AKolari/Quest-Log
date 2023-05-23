@@ -1,3 +1,4 @@
+import ProfilePartial from "@/components/ProfilePartial";
 import { getLatestUsers } from "@/utils/apiFunctions";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,15 +18,18 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {userProfiles.data.map(({ username }) => {
+      {userProfiles.data.map(({ username, id }) => {
         return (
-          <Link
-            key={username}
-            href={`/user/${username}`}
-            className="block my-5 button small"
-          >
-            {username}
-          </Link>
+          <>
+            <Link
+              key={username}
+              href={`/user/${username}`}
+              className="block my-5 button small"
+            >
+              {username}
+            </Link>
+            <ProfilePartial id={id} username={username}></ProfilePartial>
+          </>
         );
       })}
     </main>
