@@ -1,10 +1,12 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ children }) => {
   return (
-    <nav className="flex gap-4 bg-stone-600">
-      <p className="text-size-3xl text-white"> Header </p>
-    </nav>
+    <section className="flex gap-4 bg-stone-600">
+      <nav className="flex items-baseline justify-between  gap-4  text-size-3xl text-white">
+        {children}
+      </nav>
+    </section>
   );
 };
 
