@@ -9,7 +9,7 @@ const Quest = ({ quest_name, quest_description, editable }) => {
     //testing new branch
   } else {
     return (
-      <div>
+      <div bg-sky-400>
         <input type="text" id="quest_name" value={quest_name}></input>
         <input
           type="text"
