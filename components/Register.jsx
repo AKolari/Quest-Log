@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import useLogged from "@/hooks/useLogged";
 
 const Register = () => {
-  useLogged("out", "/profile");
+  useLogged("in", "/");
   const router = useRouter();
 
   function reducer(state, action) {
