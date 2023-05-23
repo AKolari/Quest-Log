@@ -55,6 +55,27 @@ const addNewList = async (
   };
 };
 
+const editListById = async (id, title, description) => {
+  const editResponse = await supabase
+    .from("list")
+    .update({
+      title: title,
+      description: description,
+    })
+    .eq("id", id);
+
+  if (editResponse.error) {
+    return {
+      success: false,
+      error: editResponse.error,
+    };
+  }
+  return {
+    success: true,
+    message: "successfully added",
+  };
+};
+
 const editQuestById = async (
   id,
   order,
@@ -372,4 +393,5 @@ export {
   addNewList,
   editQuestById,
   getLatestUsers,
+  editListById,
 };
