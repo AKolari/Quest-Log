@@ -91,7 +91,9 @@ const editQuestById = async (
       description: description,
       completion_status: completion_status,
     })
-    .eq("id", id);
+    .eq("id", id)
+    .select("*")
+    .single();
 
   if (editResponse.error) {
     return {
@@ -103,6 +105,7 @@ const editQuestById = async (
   return {
     success: true,
     message: "successfully added",
+    data: editResponse.data,
   };
 };
 

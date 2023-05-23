@@ -4,9 +4,7 @@ import Footer from "@/components/Footer";
 function Page() {
   return (
     <div className="bg-black">
-      <Header />
       <Login />
-      <Footer />
     </div>
   );
 }

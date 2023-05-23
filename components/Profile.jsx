@@ -52,7 +52,7 @@ const Profile = ({ username }) => {
       }
       setListStateData(listData);
 
-      let questList = [[]];
+      let questList = [];
       for (let i = 0; i < listData.length; i++) {
         const { questData, questError } = await getListQuests(listData[i].id);
         if (questError) {
@@ -77,7 +77,8 @@ const Profile = ({ username }) => {
     name,
     description,
     order,
-    completion_status
+    completion_status,
+    index
   ) => {
     if (completion_status === false) {
       const updateResponse = await editQuestById(
@@ -98,9 +99,25 @@ const Profile = ({ username }) => {
       );
       console.log(updateResponse);
     }
+
+    console.log("QUEST STATE DATA:");
+    console.log(questStateData);
+    const tempArray = [...questStateData];
+    console.log("TEMPARRAY DATA:");
+    console.log(tempArray);
+
+    tempArray[index].completion_status = !completion_status;
+    console.log(tempArray[index].completion_status);
+    console.log("TEMP ARRAY AFTER CHANGING VALUE");
+    console.log(tempArray);
+
+    setQuestStateData(tempArray);
+    console.log("QUEST STATE DATA CHANGING VALUE");
+
+    console.log(questStateData);
   };
 
-  if (loading) {
+  if (loading || !loaded) {
     return <p>Loading</p>;
   } else {
     return (
@@ -123,45 +140,51 @@ const Profile = ({ username }) => {
                 .filter((quest) => {
                   return quest.list_id === id;
                 })
-                .map(({ id, name, description, order, completion_status }) => {
-                  if (user.id === userStateData.id) {
-                    return (
-                      <>
-                        <div className="border-white bg-black-600 p-4 mr-10 border-2 text-white text-center self-center">
-                          <p>ID:{id}</p>
+                .map(
+                  ({ id, name, description, order, completion_status }, i) => {
+                    if (user?.id === userStateData.id) {
+                      return (
+                        <div
+                          key={id}
+                          className="border-white bg-black-600 p-4 mr-10 border-2  text-center self-center"
+                        >
+                          <p className=" text-white ">ID:{id}</p>
                           <Quest
-                            key={id}
                             quest_name={name}
                             quest_description={description}
                             editable
+                            className="text-white"
                           />
 
                           <button
+                            className="text-white"
                             onClick={() => {
                               updateQuest(
                                 id,
                                 name,
                                 description,
                                 order,
-                                completion_status
+                                completion_status,
+                                i
                               );
                             }}
                           >
                             Complete?
                           </button>
                         </div>
-                      </>
-                    );
-                  } else {
-                    return (
-                      <Quest
-                        key={id}
-                        quest_name={name}
-                        quest_description={description}
-                      />
-                    );
+                      );
+                    } else {
+                      return (
+                        <Quest
+                          key={id}
+                          quest_name={name}
+                          quest_description={description}
+                          style="text-white"
+                        />
+                      );
+                    }
                   }
-                })}
+                )}
             </div>
           );
         })}
