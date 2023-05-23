@@ -3,6 +3,7 @@ import Quest from "@/components/Quest";
 import useUser from "@/hooks/useUser";
 import { useState } from "react";
 import { useEffect } from "react";
+import Link from "next/link";
 
 import {
   editQuestById,
@@ -112,7 +113,9 @@ const Profile = ({ username }) => {
             <div key={id}>
               <div className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
                 <p>LIST ID:{id}</p>
-                <h1>LIST TITLE: {title}</h1>
+                <Link href={`/user/${username}/list/${id}`}>
+                  <h1>LIST TITLE: {title}</h1>
+                </Link>
 
                 <h2>LIST Description: {description}</h2>
               </div>
