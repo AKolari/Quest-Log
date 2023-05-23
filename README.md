@@ -40,6 +40,11 @@ Notes:
 Originally, our app was supposed to be much grander in vision. Unfortunately, we started too late. Most functionality is there, but we ran into some issues. We were unable to finish styling as we liked. We were going for a 90s video game theme, but it is incomplete. Users can fully access their accounts, create lists, etc. They can also update thier lists and add new information to them.
 
 
+
+
+Updates:
+Discovered some more bugs after deployment. Completing a quest is inconsistent, and needs to be retooled. Additionally, in the vercel version, it seems that you can only view a users profile if you are logged in. This does not happen on our local version. I will have to research this further.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
