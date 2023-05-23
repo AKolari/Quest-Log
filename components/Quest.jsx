@@ -8,7 +8,7 @@ const Quest = ({ quest_name, quest_description, editable }) => {
     ); //Hello this is steven!
   } else {
     return (
-      <div bg-sky-400>
+      <div>
         <input type="text" id="quest_name" value={quest_name}></input>
         <input
           type="text"

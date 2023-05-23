@@ -103,7 +103,7 @@ const Profile = ({ username }) => {
     return <p>Loading</p>;
   } else {
     return (
-      <div className="bg-sky-200">
+      <div className="bg-black">
         <button onClick={logout}>Logout</button>
         {JSON.stringify(userStateData)}
 
@@ -124,27 +124,29 @@ const Profile = ({ username }) => {
                   if (user.id === userStateData.id) {
                     return (
                       <>
-                        <p>ID:{id}</p>
-                        <Quest
-                          key={id}
-                          quest_name={name}
-                          quest_description={description}
-                          editable
-                        />
+                        <div className="border-white bg-black-600 p-4 mr-10 border-2 text-white text-center self-center">
+                          <p>ID:{id}</p>
+                          <Quest
+                            key={id}
+                            quest_name={name}
+                            quest_description={description}
+                            editable
+                          />
 
-                        <button
-                          onClick={() => {
-                            updateQuest(
-                              id,
-                              name,
-                              description,
-                              order,
-                              completion_status
-                            );
-                          }}
-                        >
-                          Complete?
-                        </button>
+                          <button
+                            onClick={() => {
+                              updateQuest(
+                                id,
+                                name,
+                                description,
+                                order,
+                                completion_status
+                              );
+                            }}
+                          >
+                            Complete?
+                          </button>
+                        </div>
                       </>
                     );
                   } else {
