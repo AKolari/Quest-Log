@@ -5,6 +5,36 @@ The app is themed around video game quests, where each task in the task tracker 
 Current Features:
 -Uhhhhhhhh
 
+
+
+
+Data Model:
+
+Profile:
+A table containing the profile information of each user. Linked to authentication
+id: uuid of user
+name: name of user
+username: username of user
+created_at: date user account was created
+
+List:
+A table containing the list information of each list.
+id: id of list
+title: name of list
+description: description of list
+user_id: foreign key linking to user
+created_at: date list was created
+
+Quests:
+A table containing quest information
+id: Quest id
+name: name of quest
+description: quest description
+list_id: id of list
+created_at: date created
+order: order of list
+completion_status: true or false bool for if it was completed
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
