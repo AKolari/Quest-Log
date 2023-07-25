@@ -54,7 +54,7 @@ const List = ({ list_id, editable }) => {
     return (
       <div>
         <h1>{listData.title}</h1>
-        {user?.id === listData.user_id && <button>EDIT ME MOTHERFUCKER</button>}
+        {user?.id === listData.user_id && <button></button>}
         <p>{listData.description}</p>
         {!questStateError &&
           questDataState.map(({ id, name, description }) => {

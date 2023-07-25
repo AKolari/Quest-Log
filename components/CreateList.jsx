@@ -117,7 +117,7 @@ const CreateList = () => {
             </label>
             <input
               id="title"
-              className="border border-2 border-black px-2"
+              className=" border-2 border-black px-2 bg-amber-600"
               value={listTitle}
               onChange={(e) => {
                 setListTitle(e.target.value);
@@ -131,7 +131,7 @@ const CreateList = () => {
               List Description
             </label>
             <input
-              className="border border-2 border-black px-2"
+              className=" border-2 border-black px-2 bg-amber-600"
               id="description"
               value={listDescription}
               onChange={(e) => setListDescription(e.target.value)}
@@ -146,7 +146,7 @@ const CreateList = () => {
                 </label>
                 <input
                   id={`title${i}`}
-                  className="border border-2 border-black px-2"
+                  className="border border-2 border-black px-2 bg-amber-600"
                   value={questTitles[i] || " "}
                   onChange={(e) => {
                     updateQuestTitles(e, i);
@@ -161,7 +161,7 @@ const CreateList = () => {
                   Quest Description
                 </label>
                 <input
-                  className="border border-2 border-black px-2"
+                  className="border border-2 border-black px-2 bg-amber-600"
                   id={`description${i}`}
                   value={questDescriptions[i] || " "}
                   onChange={(e) => {

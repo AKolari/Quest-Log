@@ -305,7 +305,7 @@ const EditList = ({ list_id }) => {
       return (
         <div className="text-white bg-black">
           <div className=" border-white border-2 flex justify-center">
-            <p className="text-4xl text-center py-6 ">Add New List:</p>
+            <p className="text-4xl text-center py-6 ">Edit List:</p>
           </div>
 
           <div className="border-2 border-white flex justify-center">
@@ -317,7 +317,7 @@ const EditList = ({ list_id }) => {
                   </label>
                   <input
                     id="title"
-                    className="border border-2 border-black px-2"
+                    className="border border-2 border-black px-2 bg-amber-600"
                     value={listTitle}
                     onChange={(e) => {
                       setListTitle(e.target.value);
@@ -336,7 +336,7 @@ const EditList = ({ list_id }) => {
                     List Description
                   </label>
                   <input
-                    className="border border-2 border-black px-2"
+                    className="border border-2 border-black px-2 bg-amber-600"
                     id="description"
                     value={listDescription}
                     onChange={(e) => setListDescription(e.target.value)}
@@ -356,7 +356,7 @@ const EditList = ({ list_id }) => {
                       </label>
                       <input
                         id={`title${i}`}
-                        className="border border-2 border-black px-2"
+                        className="border border-2 border-black px-2 bg-amber-600"
                         value={questTitles[i] || " "}
                         onChange={(e) => {
                           updateQuestTitles(e, i);
@@ -373,7 +373,7 @@ const EditList = ({ list_id }) => {
                         Quest Description
                       </label>
                       <input
-                        className="border border-2 border-black px-2"
+                        className="border border-2 border-black px-2 bg-amber-600"
                         id={`description${i}`}
                         value={questDescriptions[i] || " "}
                         onChange={(e) => {

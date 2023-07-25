@@ -112,46 +112,51 @@ const Profile = ({ username }) => {
           return (
             <div key={id}>
               <div className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
-                <p>LIST ID:{id}</p>
-                <Link href={`/user/${username}/list/${id}`}>
-                  <h1>LIST TITLE: {title}</h1>
-                </Link>
-
-                <h2>LIST Description: {description}</h2>
+                <h1>{title}</h1>
+                <h2>{description}</h2>
               </div>
               {questStateData
                 .filter((quest) => {
                   return quest.list_id === id;
                 })
                 .map(({ id, name, description, order, completion_status }) => {
-                  if (user.id === userStateData.id) {
-                    return (
-                      <>
-                        <div className="border-white bg-black-600 p-4 mr-10 border-2 text-white text-center self-center">
-                          <p>ID:{id}</p>
-                          <Quest
-                            key={id}
-                            quest_name={name}
-                            quest_description={description}
-                            editable
-                          />
+                  if (user) {
+                    if (user.id === userStateData.id) {
+                      return (
+                        <>
+                          <div className="border-white bg-black-600 p-4 mr-10 border-2 text-white text-center self-center">
+                            <Quest
+                              key={id}
+                              quest_name={name}
+                              quest_description={description}
+                              editable
+                            />
 
-                          <button
-                            onClick={() => {
-                              updateQuest(
-                                id,
-                                name,
-                                description,
-                                order,
-                                completion_status
-                              );
-                            }}
-                          >
-                            Complete?
-                          </button>
-                        </div>
-                      </>
-                    );
+                            <button
+                              onClick={() => {
+                                updateQuest(
+                                  id,
+                                  name,
+                                  description,
+                                  order,
+                                  completion_status
+                                );
+                              }}
+                            >
+                              Complete?
+                            </button>
+                          </div>
+                        </>
+                      );
+                    } else {
+                      return (
+                        <Quest
+                          key={id}
+                          quest_name={name}
+                          quest_description={description}
+                        />
+                      );
+                    }
                   } else {
                     return (
                       <Quest
@@ -162,6 +167,9 @@ const Profile = ({ username }) => {
                     );
                   }
                 })}
+              <Link href={`/user/${username}/list/${id}`}>
+                <h1 className="text-white">VIEW LIST </h1>
+              </Link>
             </div>
           );
         })}

@@ -1,7 +1,6 @@
 import { getListQuests, getUserLists } from "@/utils/apiFunctions";
 
 const ProfilePartial = async ({ username, id }) => {
-  console.log(id);
   const { listData, listError } = await getUserLists(id);
 
   if (listError) {
@@ -38,23 +37,22 @@ const ProfilePartial = async ({ username, id }) => {
       </p>
     );
   }
+  console.log("Gaming");
   console.log(questData);
+  console.log(listData);
 
   return (
     <div className="m-6  bg-blue-600">
       <div className=" px-10 py-8 my- border-white border-2 grid grid-flow-row ">
-        <p className="text-white pb-6">USERNAME: {username}</p>
-        <p className="text-white">LIST TITLE: {listData.title}</p>
-        <p className="text-white pb-6">
-          LIST Description: {listData.description}
-        </p>
+        <p className="text-white"> {listData[0].title}</p>
+        <p className="text-white pb-6">{listData[0].description}</p>
 
         {questData
           .slice(0, 3)
           .map(({ id, name, description, completion_status }) => {
             return (
               <div key={id}>
-                <p className="text-white">QUEST NAME: {name}</p>
+                <p className="text-white"> {name}</p>
 
                 {completion_status && (
                   <p className="text-amber-400">QUEST Complete</p>
