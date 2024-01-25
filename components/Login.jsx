@@ -1,9 +1,5 @@
 "use client";
-import {
-  getUserById,
-  getUserByUsername,
-  loginUser,
-} from "@/utils/apiFunctions";
+import { loginUser } from "@/utils/apiFunctions";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 import useLogged from "@/hooks/useLogged";
@@ -61,8 +57,8 @@ const Login = () => {
   };
 
   return (
-    <div className="barge text-black">
-      {response && (
+    <div className=" text-black">
+      {/*response && (
         <div
           className={`${
             response.success
@@ -76,7 +72,7 @@ const Login = () => {
               : `Failure: ${response.message}`}
           </span>
         </div>
-      )}
+            )*/}
       <div className="m-6 flex justify-center place-center bg-black">
         <div className=" px-8 my-4 border-white border-2">
           <h2 className="my-6 h1 text-center text-white text-3xl">Login</h2>

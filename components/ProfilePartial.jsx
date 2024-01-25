@@ -20,7 +20,7 @@ const ProfilePartial = async ({ username, id }) => {
       </p>
     );
   }
-  console.log(listData[0]);
+
   const { questData, questError } = await getListQuests(listData[0].id);
 
   if (questError) {
@@ -37,9 +37,6 @@ const ProfilePartial = async ({ username, id }) => {
       </p>
     );
   }
-  console.log("Gaming");
-  console.log(questData);
-  console.log(listData);
 
   return (
     <div className="m-6  bg-blue-600">

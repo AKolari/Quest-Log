@@ -45,9 +45,11 @@ const List = ({ list_id, editable }) => {
   } else {
     if (user) {
       if (user.id === listData.user_id) {
+        setLoading(true);
         router.replace(
           `/user/${user.questMeta.username}/list/${listData.id}/edit`
         );
+        setLoading(false);
       }
     } else {
     }
