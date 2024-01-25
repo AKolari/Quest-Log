@@ -68,6 +68,9 @@ const Register = () => {
           {response.message}
         </div>
       )}
+      <div className=" " >
+
+      </div>
 
       <div className="m-6 flex justify-center place-center bg-black ">
         <div className=" px-8 my-4 border-white border-2">

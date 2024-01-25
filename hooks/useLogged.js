@@ -11,7 +11,19 @@ function useLogged(status = "in", url = "/") {
   useEffect(
     function () {
       if (!loaded) return;
-      if ((status === "in" && !user) || (status === "out" && user)) {
+      /*
+      if(!route){
+
+          //If we are supposed to be logged in and are not 
+          if((status === "in" && !user) || (status === "out" && user)){
+            return false;
+          }
+          else{
+            return true;
+          }
+
+      }else*/ if ((status === "in" && !user) || (status === "out" && user)) {
+
         router.push(url);
       }
     },

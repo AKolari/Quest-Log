@@ -14,12 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-Black-Smoke flex-row justify-end `}
+        className={`${inter.className} bg-black    `}
       >
         <div className=" h-screen  ">
           <Header></Header>
           {children}
-          <Footer></Footer>
+          
         </div>
       </body>
     </html>
