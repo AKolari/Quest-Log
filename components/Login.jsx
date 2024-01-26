@@ -50,9 +50,8 @@ const Login = () => {
     dispatch({ type: "loading", value: false });
     if (response?.success) {
       console.log(response.meta);
-      setTimeout(() => {
-        router.replace("/");
-      }, 2000);
+      router.push("/login")
+      
     }
   };
 

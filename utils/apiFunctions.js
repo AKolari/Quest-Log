@@ -134,6 +134,7 @@ const addNewQuest = async (
 };
 
 const getUserLists = async (user_id) => {
+  console.log("Gamer");
   const { data: listData, error: listError } = await supabase
     .from("list")
     .select("*")
