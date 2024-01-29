@@ -1,10 +1,12 @@
+"use client"
 import Register from "@/components/Register";
+import Router from "next/navigation";
 
 function Page() {
-  return (
-    <div className="bg-black">
-      <Register />;
-    </div>
-  );
+  const router = useRouter();
+  useEffect(()=>{
+    
+    router.push('/');
+  }, [router])
 }
 export default Page;

@@ -108,7 +108,7 @@ const Profile = ({ username }) => {
     return (
       <div className="bg-black">
         <button onClick={logout}>Logout</button>
-        {JSON.stringify(userStateData)}
+       
 
         {listStateData.map(({ id, title, description }) => {
           return (

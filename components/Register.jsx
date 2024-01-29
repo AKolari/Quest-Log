@@ -1,8 +1,9 @@
 "use client";
-import { registerUser } from "@/utils/apiFunctions";
+import { registerUser, loginUser } from "@/utils/apiFunctions";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 import useLogged from "@/hooks/useLogged";
+
 
 const Register = () => {
   useLogged("out", "/");
@@ -44,41 +45,42 @@ const Register = () => {
     dispatch({ type: "response", response });
     dispatch({ type: "loading", loading: false });
     if (!!response?.success) {
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
+      router.push("/login")
+      //const responseLogin = await loginUser(email, password);
+
+    //dispatch({ type: "response", value: responseLogin });
+    //dispatch({ type: "loading", value: false });
+   // if (responseLogin?.success) {
+     // console.log(responseLogin.meta);
+      //router.push("/login")
+      
+   // }
+   // else{
+    //  return <>ERROR</>
+   // }
+    
+
+
+      
     }
   };
 
+
+
   return (
-    <div className="barge text-black  ">
-      {response && (
-        <div
-          className={`${
-            response.success
-              ? "bg-green-200 border-2 border-green-800 text-green-800"
-              : "bg-red-200 border-2 border-red-800 text-red-800"
-          } py-2 px-5 my-10 text-center`}
-        >
-          <span className="font-bold">
-            {response.success
-              ? `Success ${response.message ? `: ` : ``}`
-              : "Failure: "}
-          </span>
-          {response.message}
-        </div>
-      )}
+    <div className=" text-white  ">
+    
       <div className=" " >
 
       </div>
 
-      <div className="m-6 flex justify-center place-center bg-black ">
-        <div className=" px-8 my-4 border-white border-2">
-          <h2 className=" my-6 h1 text-center text-white text-3xl">Register</h2>
+      <div className="m-6 flex justify-center place-center bg-black">
+        <div className=" px-8 my-4 ">
+          <h2 className="my-6 h1 text-center text-white text-3xl">Register</h2>
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="bg-blue-700 flex border-4 w-96 border-white align py-4 items-center justify-center">
+        <div className=" flex border-4  border-white align py-4 items-center justify-center">
           <form
             onSubmit={register}
             className={loading ? "opacity-[10%] pointer-events-none" : ""}
@@ -94,37 +96,44 @@ const Register = () => {
                 }
 
                 return (
-                  <div key={key}>
-                    <div className="border-2 bg-black gmt-4 mb-4 grid grid-cols">
-                      <p key={key} className="m-3 text-white">
-                        <label className="h3 capitalize w-[75px] inline-block">
-                          {key}*:
-                        </label>
-
-                        <input
-                          className="h3 border-2 border-double border-stone-400 bg-amber-600 border-black ml-5 inline-block w-[220px] px-2"
-                          required
-                          name={key}
-                          onChange={(e) => {
-                            dispatch({
-                              type: e.target.name,
-                              value: e.target.value,
-                            });
-                          }}
-                          value={state[key]}
-                          type={type}
-                        />
-                      </p>
-                    </div>
-                  </div>
+                  <div
+                  key={key}
+                  className="border-2 bg-black gmt-4 mb-4 mx-4 grid grid-cols"
+                >
+                  <p key={key} className="m-3 text-white">
+                    <label className="h3 capitalize w-[75px] inline-block">
+                      {key}*
+                    </label>
+                    <input
+                      className="h3 border-2 border-double border-black  bg-Gunmetal  ml-5 inline-block w-[150px] md:w-[220px] px-2"
+                      required
+                      name={key}
+                      onChange={(e) => {
+                        dispatch({
+                          type: e.target.name,
+                          value: e.target.value,
+                        });
+                      }}
+                      value={state[key]}
+                      type={type}
+                    />
+                  </p>
+                </div>
                 );
               })}
-            <div className="flex justify-center justify-items-end my-10 bg-black border-white border-4">
-              <input className="button small text-white" type="submit"></input>
+            <div className="flex justify-center  items-center  my-10 bg-black ">
+              <input className="button small border-white border-2 w-[75px] text-white" type="submit"></input>
             </div>
           </form>
         </div>
       </div>
+      {response&&<span className="font-bold italic animate-pulse">
+            {response.success
+              ? `Success ${response.message ? `: ` : ``}`
+              : "Failure: "}
+              {response.message}
+          </span>
+          }
     </div>
   );
 };

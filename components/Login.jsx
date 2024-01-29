@@ -56,7 +56,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" text-black">
+    <div className=" text-white">
       {/*response && (
         <div
           className={`${
@@ -73,13 +73,13 @@ const Login = () => {
         </div>
             )*/}
       <div className="m-6 flex justify-center place-center bg-black">
-        <div className=" px-8 my-4 border-white border-2">
+        <div className=" px-8 my-4 ">
           <h2 className="my-6 h1 text-center text-white text-3xl">Login</h2>
         </div>
       </div>
 
       <div className="flex justify-center">
-        <div className="bg-blue-700 flex border-4 w-96 border-white align py-4 items-center justify-center">
+        <div className=" flex border-4 align py-4 items-center justify-center">
           <form
             onSubmit={login}
             className={loading ? "opacity-[10%] pointer-events-none" : ""}
@@ -98,14 +98,14 @@ const Login = () => {
                 return (
                   <div
                     key={key}
-                    className="border-2 bg-black gmt-4 mb-4 grid grid-cols"
+                    className="border-2 bg-black gmt-4 mb-4 mx-4 grid grid-cols"
                   >
                     <p key={key} className="m-3 text-white">
                       <label className="h3 capitalize w-[75px] inline-block">
                         {key}*
                       </label>
                       <input
-                        className="h3 border-2 border-double border-stone-400 bg-amber-600 border-black ml-5 inline-block w-[220px] px-2"
+                        className="h3 border-2 border-double border-black  bg-Gunmetal  ml-5 inline-block w-[150px] md:w-[220px] px-2"
                         required
                         name={key}
                         onChange={(e) => {
@@ -121,12 +121,23 @@ const Login = () => {
                   </div>
                 );
               })}
-            <div className="flex justify-center justify-items-end my-10 bg-black border-white border-4">
-              <input className="button small text-white" type="submit"></input>
+            <div className="flex justify-center  items-center  my-10 bg-black ">
+              <input className="button small border-white border-2 w-[75px] text-white" type="submit"></input>
             </div>
           </form>
         </div>
       </div>
+       {response && (
+        <div
+          
+        >
+          <span className="font-bold italic animate-pulse">
+            {response.success
+              ? `Success ${response.message ? `: ` : ``}`
+              : `Failure: ${response.message}`}
+          </span>
+        </div>
+            )}
     </div>
   );
 };

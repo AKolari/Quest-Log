@@ -9,8 +9,10 @@ function Page() {
 
   const router = useRouter();
   useEffect(()=>{
+   
+      router.push('/');
+   
     
-    router.push('/');
   }, [router])
  
 }

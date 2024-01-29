@@ -4,11 +4,14 @@ import { getLatestUsers } from "@/utils/apiFunctions";
 import Image from "next/image";
 import Link from "next/link";
 import HomeComponent from "@/components/HomeComponent";
+import useUser from "@/hooks/useUser";
 
 
 
 export default async function Home() {
-  const userProfiles = await getLatestUsers(3);
+  const userProfiles = await getLatestUsers(32);
+  
+  
   
 
   if (userProfiles.error) {
@@ -19,8 +22,8 @@ export default async function Home() {
     return <p>No users have signed up yet</p>;
   }
 
-  return (<main className="grid grid-cols-5 min-h-screen justify-center items-center " >
-    <HomeComponent userProfiles={userProfiles} />
+  return (<main className="grid grid-cols-5 min-h-screen justify-center items-center font-Testing " >
+    <HomeComponent userProfiles={userProfiles}  />
     
     
     </main>

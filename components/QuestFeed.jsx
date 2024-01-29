@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import ProfilePartial from "./ProfilePartial";
+import { useState, useEffect } from "react";
 
 
 const QuestFeed =({profiles})=>{
+
+  const [timer, setTimer]=useState()
+  const [targetIndex, setTargetIndex]=useState(0)
 
     if(!profiles){
         return <p>Loading...</p>
@@ -18,27 +22,21 @@ const QuestFeed =({profiles})=>{
         return <p>No users have signed up yet</p>;
     }
     
-    return<> {profiles.data.map(({ username, id }) => {
+    return<div className="grid grid-cols-2 grid-rows-4 md:grid-cols-2 lg:grid-cols-4  " > {profiles.data.map(({ username, id }) => {
 
         
         return (
             
-            <div key={id} className="border-white border-dotted border-2 p-2 m-5 grid grid-cols-2 self-center justify-items-center ">
+            <div key={id} /*className="border-white border-dotted border-2 p-2 m-5 grid grid-cols-2 self-center justify-items-center " */>
                
-              <Link
-        
-                href={`/user/${username}`}
-                className=" m-4 p-6 h-32 w-48 button small text-center text-white  self-center bg-blue-600 border-white border-4 text-3xl border-double "
-              >
-                {username}
-              </Link>
+             
              { <ProfilePartial id={id} username={username}></ProfilePartial>}
             </div>
           
         )
       })}
 
-</>
+</div>
 
 
 }
