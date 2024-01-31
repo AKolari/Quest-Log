@@ -7,7 +7,7 @@ const logout = async () => {
   return { success: !error, error };
 };
 
-const getLatestUsers = async (num = 5) => {
+const getLatestUsers = async (num) => {
   const { data, error } = await supabase
     .from("profile")
     .select("*")

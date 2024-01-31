@@ -20,8 +20,10 @@ const [questError, setQuestError]=useState(false)
         setListError(lists.listError);
 
         if(!lists.listData || lists?.listData.length===0){
+          console.log("RIP")
           setLoading(false);
           setQuestError(true);
+
           return
         }
         else{
@@ -29,8 +31,10 @@ const [questError, setQuestError]=useState(false)
           console.log(lists.listData[0])
           setQuestData(quests.questData);
           setQuestError(quests.questError);
+          
   
           setLoading(false);
+          
 
         }
 
@@ -60,7 +64,7 @@ if(loading){
 
 if(questError){
 
-  return  <div className=" animate-pulse text-white text-xs m-6 transition-opacity ease-in duration-700 opacity-100  md:text-base " >
+  return  <div className=" animate-pulse  hover:animate-none text-white text-xs m-6 transition-opacity ease-in duration-700 opacity-100  md:text-base " >
 
   <Link className=" w-max " 
 
@@ -85,7 +89,7 @@ if(questError){
   
 
   return (
-    <div className="m-6 animate-pulse transition-opacity ease-in duration-700 opacity-100">
+    <div className="m-6 ">
       {/*<div className=" px-10 py-8 my- border-white border-2 grid grid-flow-row ">
 
         {!listData&&(
@@ -135,7 +139,7 @@ if(questError){
           .slice(0, 1)
           .map(({ id, name, description, completion_status }) => {
             return (
-              <div key={id} className=" text-white text-xs  md:text-base " >
+              <div key={id} className=" animate-pulse  hover:animate-none text-white text-xs  md:text-base " >
 
                 <Link className=" w-max " 
         

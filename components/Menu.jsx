@@ -27,6 +27,7 @@ return (<div className=" flex h-1/2  flex-col justify-center items-center text-e
 
 {user&&(<>
    <p className="hover:text-xl" >Welcome, {user.questMeta.username}</p>
+   <p><button className={`${currentMenuItem==="Create"? ' underline text-White-Smoke ': ''} hover:text-xl`}  onClick={()=>{MenuItemHandler("Create")}} >Create</button></p>
    <button className="hover:text-xl"  onClick={()=>{
     MenuItemHandler("QuestFeed");
     logout();

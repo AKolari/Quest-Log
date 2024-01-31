@@ -9,8 +9,8 @@ import useUser from "@/hooks/useUser";
 
 
 export default async function Home() {
-  const userProfiles = await getLatestUsers(32);
-  
+  const userProfiles = await getLatestUsers(12);
+  //console.log(userProfiles.data);
   
   
 
