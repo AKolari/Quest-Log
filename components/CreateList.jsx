@@ -30,6 +30,12 @@ const CreateList = ({user}) => {
   const addList = async (e) => {
     e.preventDefault();
 
+    console.log("Gamer");
+
+    setNoTitle(false);
+    setNoQuests(false);
+    setEmptyQuest(false);
+
     if(listTitle===""){
         setNoTitle(true);
         return;
@@ -45,9 +51,7 @@ const CreateList = ({user}) => {
       }
     }
 
-    setNoTitle(false);
-    setNoQuests(false);
-    setEmptyQuest(false);
+    
 
     const addedList = await addNewList(user.id, listTitle, listDescription);
     if (addedList.success == false) {
@@ -156,7 +160,7 @@ const CreateList = ({user}) => {
       <div className="flex flex-col items-center h-full w-full  " >
         <h1 className="text-White-Smoke underline text-5xl animate-pulse text-center" >Begin Your New Adventure!</h1>
 
-        <form className=" text-center "  onSubmit={addList}>
+        <form className=" text-center "  onSubmit={((addList))}>
           {currentPage===0&&<>
           <p className="my-5 text-xl ">
             <label htmlFor="title" className="block">
@@ -243,10 +247,22 @@ const CreateList = ({user}) => {
           </div>
           </> 
           }
-
+          {noTitle&&<span className="font-bold italic animate-pulse block">
+            Your Adventure Must Have a Title
+          </span>
+          }
+          {noQuests&&<span className="font-bold italic animate-pulse block">
+            Your Adventure Must Have Quests
+          </span>
+          }
+           {emptyQuest&&<span className="font-bold italic animate-pulse block">
+            All Quests Must Be Title
+          </span>
+          }
 {currentPage===1&&<>{numOfQuests != 100 && (
-          <button
-            onClick={() => {
+          <button className="my-2"
+            onClick={(e) => {
+              e.preventDefault();
               updateNumOfQuests();
             }}
           >
@@ -264,7 +280,7 @@ const CreateList = ({user}) => {
           )*/}
         </>}
 
-          <p className="text-center">
+          <p className="text-center my-2">
             <input type="submit" className="button small" />
           </p>
         </form>
