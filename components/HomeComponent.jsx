@@ -16,7 +16,7 @@ import CreateList from "./CreateList"
 
 const HomeComponent = ({userProfiles})=>{
 
-  
+    { console.log("WE BE RENDERING THE HOME PAGE")}
 
 
 const [HomeItem, SetHomeItem] = useState("QuestFeed");
@@ -63,7 +63,7 @@ return <>
 
       
     </div>
-   <Menu currentMenuItem={HomeItem} MenuItemHandler={MenuItemHandler} user={user} />
+   <Menu currentMenuItem={HomeItem} MenuItemHandler={()=>MenuItemHandler} user={user} />
 
 </>
 

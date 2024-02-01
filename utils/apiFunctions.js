@@ -2,18 +2,20 @@ import { useRouter } from "next/navigation";
 import supabase from "./supabase";
 
 const logout = async () => {
+  console.log("Logging Out")
   const { error } = await supabase.auth.signOut();
-
+  
   return { success: !error, error };
 };
 
 const getLatestUsers = async (num) => {
+  console.log("Getting Latest Users")
   const { data, error } = await supabase
     .from("profile")
     .select("*")
     .order("created_at", { ascending: false })
     .limit(num);
-
+  
   if (error) {
     return {
       success: false,
@@ -32,6 +34,7 @@ const addNewList = async (
   title = "New List",
   description = "list"
 ) => {
+  console.log("Adding New List")
   const insertResponse = await supabase
     .from("list")
     .insert({
@@ -63,7 +66,7 @@ const editListById = async (id, title, description) => {
       description: description,
     })
     .eq("id", id);
-
+console.log("Edditing List")
   if (editResponse.error) {
     return {
       success: false,
@@ -83,6 +86,7 @@ const editQuestById = async (
   description,
   completion_status
 ) => {
+  console.log("Edditing Quest")
   const editResponse = await supabase
     .from("quest")
     .update({
@@ -112,6 +116,7 @@ const addNewQuest = async (
   name = "New Quest",
   description = "quest"
 ) => {
+  console.log("Adding Quest")
   const insertResponse = await supabase.from("quest").insert({
     order,
     list_id,
@@ -125,7 +130,7 @@ const addNewQuest = async (
       error: insertResponse.error,
     };
   }
-  console.log(insertResponse);
+  
   return {
     success: true,
     message: "successfully added",
@@ -134,7 +139,7 @@ const addNewQuest = async (
 };
 
 const getUserLists = async (user_id) => {
-  console.log("Gamer");
+  console.log("Getting User Lists");
   const { data: listData, error: listError } = await supabase
     .from("list")
     .select("*")
@@ -154,6 +159,7 @@ const getUserLists = async (user_id) => {
 };
 
 const getListById = async (id) => {
+  console.log("Getting List ID");
   const { data, error } = await supabase
     .from("list")
     .select("*")
@@ -173,6 +179,7 @@ const getListById = async (id) => {
 };
 
 const getListQuests = async (list_id) => {
+  console.log("Getting Quests From ListId");
   const { data: questData, error: questError } = await supabase
     .from("quest")
     .select("*")
@@ -193,6 +200,7 @@ const getListQuests = async (list_id) => {
 };
 
 const getQuestByQuestId = async (quest_id) => {
+  console.log("Getting Quest With Quest ID");
   const { data: questData, error: questError } = await supabase
     .from("quest")
     .select("*")
@@ -213,6 +221,7 @@ const getQuestByQuestId = async (quest_id) => {
 };
 
 const getCurrentUser = async () => {
+  console.log("Getting Current User");
   const session = await supabase.auth.getSession();
 
   if (session?.data?.session?.user) {
@@ -246,6 +255,7 @@ const getCurrentUser = async () => {
 };
 
 const getUserByUsername = async (username) => {
+  console.log("Getting User by Username");
   const { data, error } = await supabase
     .from("profile")
     .select("*")
@@ -265,6 +275,7 @@ const getUserByUsername = async (username) => {
 };
 
 const getUserById = async (id) => {
+  console.log("Getting User by Id");
   const { data, error } = await supabase
     .from("profile")
     .select("*")
@@ -284,6 +295,7 @@ const getUserById = async (id) => {
 };
 
 const registerUser = async (email, password, name, username) => {
+  console.log("Registering User");
   const { data, error } = await supabase
     .from("profile")
     .select("*")
@@ -338,6 +350,7 @@ const registerUser = async (email, password, name, username) => {
 };
 
 const loginUser = async (email, password) => {
+  console.log("Logging In User");
   const authResponse = await supabase.auth.signInWithPassword({
     email,
     password,

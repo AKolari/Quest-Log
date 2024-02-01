@@ -3,6 +3,7 @@ import useLogged from "@/hooks/useLogged";
 import useUser from "@/hooks/useUser";
 import { logout } from "@/utils/apiFunctions";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 
 const Menu = ({MenuItemHandler, currentMenuItem, user})=>{
@@ -26,7 +27,7 @@ return (<div className=" flex h-1/2  flex-col justify-center items-center text-e
 
 
 {user&&(<>
-   <p className="hover:text-xl" >Welcome, {user.questMeta.username}</p>
+   <Link href={`/user/${user.questMeta.username}`} ><p className="hover:text-xl" >Welcome, {user.questMeta.username}</p></Link>
    <p><button className={`${currentMenuItem==="Create"? ' underline text-White-Smoke ': ''} hover:text-xl`}  onClick={()=>{MenuItemHandler("Create")}} >Create</button></p>
    <button className="hover:text-xl"  onClick={()=>{
     MenuItemHandler("QuestFeed");

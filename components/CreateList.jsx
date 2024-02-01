@@ -30,7 +30,7 @@ const CreateList = ({user}) => {
   const addList = async (e) => {
     e.preventDefault();
 
-    console.log("Gamer");
+    
 
     setNoTitle(false);
     setNoQuests(false);

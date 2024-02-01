@@ -109,7 +109,7 @@ const Profile = ({ username }) => {
       <div className="bg-black">
         <button onClick={logout}>Logout</button>
        
-
+        { console.log("WE BE RENDERING THE HOME PAGE")}
         {listStateData.map(({ id, title, description }) => {
           return (
             <div key={id}>

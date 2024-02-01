@@ -6,12 +6,12 @@ import Link from "next/link";
 import HomeComponent from "@/components/HomeComponent";
 import useUser from "@/hooks/useUser";
 
-
+const validate=30;
 
 export default async function Home() {
   const userProfiles = await getLatestUsers(12);
   //console.log(userProfiles.data);
-  
+ 
   
 
   if (userProfiles.error) {
