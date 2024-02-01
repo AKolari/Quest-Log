@@ -11,8 +11,8 @@ import Quest from "@/components/Quest";
 import { useState } from "react";
 import { useEffect } from "react";
 import useUser from "@/hooks/useUser";
-const CreateList = ({user}) => {
-  //const { user, error, loaded, refreshUser } = useUser();
+const CreateList = () => {
+  const { user, error, loaded, refreshUser } = useUser();
   const router = useRouter();
 
   //useLogged("in", "/");

@@ -7,7 +7,8 @@ import Link from "next/link";
 
 
 const Menu = ({MenuItemHandler, currentMenuItem, user})=>{
-//const {user, error, loaded}= useUser();
+
+
 
 
 

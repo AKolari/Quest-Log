@@ -3,9 +3,11 @@ import { registerUser, loginUser } from "@/utils/apiFunctions";
 import { useReducer } from "react";
 import { useRouter } from "next/navigation";
 import useLogged from "@/hooks/useLogged";
+import useUser from "@/hooks/useUser";
 
 
 const Register = () => {
+  const { user, loaded } = useUser();
   useLogged("out", "/");
   const router = useRouter();
 

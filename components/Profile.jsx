@@ -106,18 +106,19 @@ const Profile = ({ username }) => {
     return <p>Loading</p>;
   } else {
     return (
-      <div className="bg-black">
-        <button onClick={logout}>Logout</button>
+      <div className="flex justify-center items-center h-screen ">
+        
        
         { console.log("WE BE RENDERING THE HOME PAGE")}
         {listStateData.map(({ id, title, description }) => {
           return (
-            <div key={id}>
+            <div className="grid grid-cols-3" key={id}>
               {console.log(id)}
-              <div className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center">
+              <div className="border-white bg-blue-600 p-4 mr-10 border-2 text-white text-center self-center col-span-1 ">
                 <h1>{title}</h1>
                 <h2>{description}</h2>
               </div>
+              <div className=" col-span-2 " >
               {questStateData
                 .filter((quest) => {
                   return quest.list_id === id;
@@ -131,32 +132,28 @@ const Profile = ({ username }) => {
                           className="border-white bg-black-600 p-4 mr-10 border-2 text-white text-center self-center"
                         >
                           <Quest
-                            quest_name={name}
-                            quest_description={description}
-                            editable
+                          id={id}
+                          key={id}
+                            name={name}
+                            description={description}
+                            order={order}
+                            editable={true}
+                            completion={completion_status}
                           />
 
-                          <button
-                            onClick={() => {
-                              updateQuest(
-                                id,
-                                name,
-                                description,
-                                order,
-                                completion_status
-                              );
-                            }}
-                          >
-                            Complete?
-                          </button>
+                         
                         </div>
                       );
                     } else {
                       return (
                         <Quest
-                          key={id}
-                          quest_name={name}
-                          quest_description={description}
+                        id={id}
+                        key={id}
+                          name={name}
+                          description={description}
+                          order={order}
+                          
+                          completion={completion_status}
                         />
                       );
                     }
@@ -170,6 +167,7 @@ const Profile = ({ username }) => {
                     );
                   }
                 })}
+                </div>
 
               <Link href={`/user/${username}/list/${id}`}>
                 <h1 className="text-white">VIEW LIST </h1>

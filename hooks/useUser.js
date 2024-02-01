@@ -20,6 +20,7 @@ function useUser() {
     setLoaded(false);
 
     const currentUser = await getCurrentUser();
+    //console.log("USER IS LOADED")
     setLoaded(true);
     if (!currentUser) {
       setUser(null);
