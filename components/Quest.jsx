@@ -1,15 +1,11 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { editQuestById } from "@/utils/apiFunctions";
 
 const Quest = ({ id, name, description, order, editable, completion }) => {
-
-
-const [loading, setLoading]=useState(false);
-const [completionState, setCompletionState]=useState(completion)
-
-
+  const [loading, setLoading] = useState(false);
+  const [completionState, setCompletionState] = useState(completion);
 
   const updateQuest = async (
     id,
@@ -42,37 +38,20 @@ const [completionState, setCompletionState]=useState(completion)
   };
   return (
     <div className="text-white">
-     
-     
-     
-      <h1 className= {`  ${completionState? "line-through":""}   w-[220px] px-2 h3 border-2 border-double border-stone-400 bg-amber-600 border-black ml-5 inline-block `}>
-        {name}
-      </h1>
-
       <button
-                            onClick={() => {
-                              setCompletionState(!completionState)
-                              updateQuest(
-                                id,
-                                name,
-                                description,
-                                order,
-                                completion
-                              );
-                              
-                            }}
-                          >
-                            Complete?
-                          </button>
-      
-      
-      {/*<p className="h3 border-2 border-double border-stone-400 bg-amber-600 border-black ml-5 inline-block w-[220px] px-2">
-        {quest_description}
-  </p>*/}
-
-
-
-
+        onClick={() => {
+          setCompletionState(!completionState);
+          updateQuest(id, name, description, order, completion);
+        }}
+      >
+        <h1
+          className={`  ${
+            completionState ? "line-through" : ""
+          }    border-black ml-5 inline-block `}
+        >
+          {name}
+        </h1>
+      </button>
     </div>
   );
 };
