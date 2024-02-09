@@ -118,7 +118,7 @@ const Profile = ({ username }) => {
                   <div
                     className={` ${
                       activeAdventureId === id ? " underline" : ""
-                    } hover:text-xl   w-full flex flex-col justify-end items-end mr-4 text-white text-end `}
+                    } hover:text-xl text-xs md:text-base md:hover:text-base   w-full flex flex-col justify-end items-end mr-4 text-white text-end `}
                   >
                     <button
                       onClick={() => {
@@ -141,7 +141,7 @@ const Profile = ({ username }) => {
               return (
                 <div className=" w-full justify-center items-center  " key={id}>
                   {activeAdventureId === id && (
-                    <div className=" flex-col items-center justify-start my-18  ">
+                    <div className=" flex-col items-center justify-start text-xs md:text-base my-18  ">
                       <h1 className=" text-3xl my-8 ">{title}</h1>
                       <p className=" text-left my-4 ">{description}</p>
                     </div>
@@ -157,7 +157,7 @@ const Profile = ({ username }) => {
                     </div>
                   )}
                   {activeAdventureId === id && (
-                    <ul className="  list-disc my-8   w-full ">
+                    <ul className="  list-disc my-8  text-xs md:text-base w-full ">
                       {questStateData
                         .filter((quest) => {
                           return quest.list_id === id;
