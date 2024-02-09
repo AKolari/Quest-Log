@@ -17,19 +17,20 @@ Initially, the UI was inspired by classic Final Fantasy. For 2.0, I decided to p
 - ### Simple UI
 
 ## 2.0 Features:
-
-- ### Refreshed UI inspired by Skyrim
-- 
-
+- ### UI Improvements:
+  Refreshed the UI. It is now inspired by the UI of Skyrim, and is much more user friendly and aesthetically pleasing
 - ### Better Logout:
   When logging out and not on home page, there may be errors as certain pages require a user to be logged in. I plan to add automatic routing to home page when signing out.
-- ### Remove Blank Quests:
-  When creating a list, you can add blank quests. I plan to remove the ability to add quests that are blank.
+- ### Form Protection:
+  Added new protections to ensure users can't submit empty forms.
 - ### Display Most Recent List:
-  Home page currently displays a user's first ever list. I want to change it to display the most recent list. It is a simple fix, but also low priority, and will be fixed in my next push.
-- ### UI Improvements:
-  Improve the UI to be more aesthetically appealing, but this is at the lower end of priority, as adding functions is more pressing.
-
+  By default, the player's profile will first display their most recent list. Not their first.
+- ### Streamlined Routes:
+  Multiple old routes, such as /create, /register, /user/[username]/list/[id] have been removed, with their functionality being moved to other routes.
+- ### Responsive Design:
+  The New UI will be functional at multiple breakpoints, inlcuding on mobile.
+- ### Quality of Life Improvements:
+  New Loading Screen while data loads, improved loading times and performance.
 
 
 
@@ -37,17 +38,12 @@ Initially, the UI was inspired by classic Final Fantasy. For 2.0, I decided to p
 
   ## Routes:
   - ### /
-    Root Directory. Displays home page with three most recent users and their quests.
-  - ### /create
-    Create new list of quests. Only accessible if logged in.
+    Root Directory. Displays A home page inspired by Skyrim's main menu. Initially displays a feed of 16 user profiles, and their most recently created quests, which the user can click on to be taken to          that account page. When Not logged in, the user can switch to a login or register component as well. When logged in, they can switch to view the default feed again, a form which lets them create a new 
+    list, or be routed to their own profile.
   - ### /login
-    Login
-  - ### /register
-    Register for an account
+    Empty route which routes you back to the default page.
   - ### /user/[username]
     View a user's profile and see their lists. If user is logged in, and viewing their profile, they can mark quests as complete.
-  - ### /user/[username]/list/[id]
-    View an individual list. If user is logged in and viewing one of their lists, they will be rerouted to /user/[username]/list/[id]/edit
   - ### /user/[username]/list/[id]/edit
     Allows user to edit their own list. Only accesible if logged into the specific account.
 
