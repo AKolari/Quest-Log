@@ -103,4 +103,4 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Vercel Deployment:
 Check out the Vercel deployment here:
-https://quest-log-lhom.vercel.app/
+https://quest-15f74by5a-akolari.vercel.app/
