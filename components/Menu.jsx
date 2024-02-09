@@ -31,7 +31,7 @@ const Menu = ({ MenuItemHandler, currentMenuItem, user }) => {
                 currentMenuItem === "Login"
                   ? " underline text-White-Smoke "
                   : ""
-              } hover:text-xl`}
+              } hover:text-xl mt-4 `}
               onClick={() => {
                 MenuItemHandler("Login");
               }}
