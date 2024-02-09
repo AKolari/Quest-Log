@@ -40,8 +40,10 @@ const Quest = ({ id, name, description, order, editable, completion }) => {
     <div className="text-white">
       <button
         onClick={() => {
-          setCompletionState(!completionState);
-          updateQuest(id, name, description, order, completion);
+          if (editable) {
+            setCompletionState(!completionState);
+            updateQuest(id, name, description, order, completion);
+          }
         }}
       >
         <h1
