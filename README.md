@@ -1,25 +1,26 @@
-# QUEST LOG
+# QUEST LOG 2.0
 
-Quest log is a simple task tracker app built using Next.js, supabase, and tailwind.css
+Quest log was a simple task tracker app built using Next.js, supabase, and tailwind.css, developed as the final project for my modern web development class in Spring 2023. I recently decided to revisit this project, as I believed I could do better and make a more interesting, more engaging experience.
 
 The app is inspired by video game quest systems. Every user can create a list of new "quests" to undertake. Users can create an account, and then create unique lists with as many quests as the like.
+Initially, the UI was inspired by classic Final Fantasy. For 2.0, I decided to pivot, and wanted to develop a UI inspired by Skyrim
 
 
 
-## Current Features:
+## Initial Features:
 - ### Account creation and user authentication using email.
 - ### Create a list of quests, and have that list of quests displayed so that other people can see them.
 - ### Create additional lists of quests.
 - ### View the quests of other users of the App.
 - ### A home page that shows the first quest list of the three most recent user.
 - ### User's may edit their own lists, marking quests as complete, and adding new quests.
-- ### Simple UI which is navegable, if a bit ugly.
+- ### Simple UI
 
-## Upcoming Features:
-- ### Reorder Quests:
-  There is currently functionality to change the order of quests, but the function is not consistent, and does not always work.
-- ### Delete Lists and Quests:
-  Add the ability to delete individual quests and lists when they are no longer needed.
+## 2.0 Features:
+
+- ### Refreshed UI inspired by Skyrim
+- 
+
 - ### Better Logout:
   When logging out and not on home page, there may be errors as certain pages require a user to be logged in. I plan to add automatic routing to home page when signing out.
 - ### Remove Blank Quests:
